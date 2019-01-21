@@ -7,7 +7,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter_app',
       theme: new ThemeData(
         // This is the theme of your application.
         //
@@ -19,7 +19,10 @@ class MyApp extends StatelessWidget {
         // counter didn't reset back to zero; the application is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: new MyHomePage(title: 'Flutter Demo Home Page'),
+      routes: {
+        "new_page":(context)=>NewRoute()
+      },
+      home: new MyHomePage(title: '主页'),
     );
   }
 }
@@ -94,8 +97,23 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             new Text(
               '$_counter',
-              style: Theme.of(context).textTheme.display1,
+              style: Theme
+                  .of(context)
+                  .textTheme
+                  .display1,
             ),
+            FlatButton(
+              child: Text("open new route"),
+              textColor: Colors.blue,
+              onPressed: () {
+//                Navigator.push(
+//                    context, new MaterialPageRoute(builder: (context) {
+//                  return new NewRoute();
+//                }));
+              //新的方法打开路由 这种方式，无法动态传递参数 上面一种可以动态传递参数
+                Navigator.pushNamed(context, "new_page");
+              },
+            )
           ],
         ),
       ),
@@ -104,6 +122,18 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: new Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+class NewRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: AppBar(title: Text("new route")),
+      body: Center(
+        child: Text("This is new route"),
+      ),
     );
   }
 }
