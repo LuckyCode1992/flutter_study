@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:english_words/english_words.dart';
 
 void main() => runApp(new MyApp());
 
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       routes: {
-        "new_page":(context)=>NewRoute()
+        "new_page": (context) => NewRoute(),
+        "RandomWordsWidget": (context) => RandomWordsWidget()
       },
       home: new MyHomePage(title: '主页'),
     );
@@ -97,10 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             new Text(
               '$_counter',
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .display1,
+              style: Theme.of(context).textTheme.display1,
             ),
             FlatButton(
               child: Text("open new route"),
@@ -110,10 +109,17 @@ class _MyHomePageState extends State<MyHomePage> {
 //                    context, new MaterialPageRoute(builder: (context) {
 //                  return new NewRoute();
 //                }));
-              //新的方法打开路由 这种方式，无法动态传递参数 上面一种可以动态传递参数
+                //新的方法打开路由 这种方式，无法动态传递参数 上面一种可以动态传递参数
                 Navigator.pushNamed(context, "new_page");
               },
-            )
+            ),
+          FlatButton(
+            child: Text("open random"),
+            textColor: Colors.red,
+            onPressed: (){
+              Navigator.pushNamed(context, "RandomWordsWidget");
+            },
+          )
           ],
         ),
       ),
@@ -135,5 +141,19 @@ class NewRoute extends StatelessWidget {
         child: Text("This is new route"),
       ),
     );
+  }
+}
+
+class RandomWordsWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // 生成随机字符串
+    final wordPair = new WordPair.random();
+    return Scaffold(
+      body: Center(
+        child: Text(wordPair.toString()),
+      ),
+    );
+
   }
 }
