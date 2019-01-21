@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
+import 'dart:async' show Future;
+import 'package:flutter/services.dart';
 
 void main() => runApp(new MyApp());
 
@@ -94,6 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Image.asset("images/girl.jpg",width: 55.0,height: 55.0),
             new Text(
               'You have pushed the button this many times:',
             ),
@@ -113,13 +116,23 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.pushNamed(context, "new_page");
               },
             ),
-          FlatButton(
-            child: Text("open random"),
-            textColor: Colors.red,
-            onPressed: (){
-              Navigator.pushNamed(context, "RandomWordsWidget");
-            },
-          )
+            FlatButton(
+              child: Text("open random"),
+              textColor: Colors.yellow,
+              onPressed: () {
+                Navigator.pushNamed(context, "RandomWordsWidget");
+              },
+            ),
+            FlatButton(
+              child: Text("open loadjson"),
+              textColor: Colors.red,
+              onPressed: () {
+                Navigator.push(context,
+                    new MaterialPageRoute(builder: (context) {
+                  return new loadJsonWidget();
+                }));
+              },
+            ),
           ],
         ),
       ),
@@ -154,6 +167,19 @@ class RandomWordsWidget extends StatelessWidget {
         child: Text(wordPair.toString()),
       ),
     );
+  }
+}
 
+class loadJsonWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    Future<String> loadAsset() async {
+      return await rootBundle.loadString('json/test.json');
+    }
+
+    final json = loadAsset();
+    return Scaffold(
+      body: Center(),
+    );
   }
 }
