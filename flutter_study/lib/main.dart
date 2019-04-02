@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:english_words/english_words.dart';
-import 'dart:async' show Future;
-import 'package:flutter/services.dart';
+
 
 void main() => runApp(new MyApp());
 
@@ -22,10 +20,7 @@ class MyApp extends StatelessWidget {
         // counter didn't reset back to zero; the application is not restarted.
         primarySwatch: Colors.blue,
       ),
-      routes: {
-        "new_page": (context) => NewRoute(),
-        "RandomWordsWidget": (context) => RandomWordsWidget()
-      },
+
       home: new MyHomePage(title: '主页'),
     );
   }
@@ -104,35 +99,6 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.display1,
             ),
-            FlatButton(
-              child: Text("open new route"),
-              textColor: Colors.blue,
-              onPressed: () {
-//                Navigator.push(
-//                    context, new MaterialPageRoute(builder: (context) {
-//                  return new NewRoute();
-//                }));
-                //新的方法打开路由 这种方式，无法动态传递参数 上面一种可以动态传递参数
-                Navigator.pushNamed(context, "new_page");
-              },
-            ),
-            FlatButton(
-              child: Text("open random"),
-              textColor: Colors.yellow,
-              onPressed: () {
-                Navigator.pushNamed(context, "RandomWordsWidget");
-              },
-            ),
-            FlatButton(
-              child: Text("open loadjson"),
-              textColor: Colors.red,
-              onPressed: () {
-                Navigator.push(context,
-                    new MaterialPageRoute(builder: (context) {
-                  return new loadJsonWidget();
-                }));
-              },
-            ),
           ],
         ),
       ),
@@ -145,41 +111,4 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class NewRoute extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: AppBar(title: Text("new route")),
-      body: Center(
-        child: Text("This is new route"),
-      ),
-    );
-  }
-}
 
-class RandomWordsWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // 生成随机字符串
-    final wordPair = new WordPair.random();
-    return Scaffold(
-      body: Center(
-        child: Text(wordPair.toString()),
-      ),
-    );
-  }
-}
-
-class loadJsonWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    Future<String> loadAsset() async {
-      return await rootBundle.loadString('json/test.json');
-    }
-
-    final json = loadAsset();
-    return Scaffold(
-      body: Center(),
-    );
-  }
-}
