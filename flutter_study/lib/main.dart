@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {
@@ -8,21 +7,33 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      title: 'Flutter_app',
-      theme: new ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or press Run > Flutter Hot Reload in IntelliJ). Notice that the
-        // counter didn't reset back to zero; the application is not restarted.
-        primarySwatch: Colors.blue,
+      title: "welcome to flutter",
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('hello appbar'),
+          centerTitle: false,
+        ),
+        body: Center(
+          child: Text('hello world'),
+        ),
       ),
-
-      home: new MyHomePage(title: '主页'),
     );
+//    return new MaterialApp(
+//      title: 'Flutter_app',
+//      theme: new ThemeData(
+//        // This is the theme of your application.
+//        //
+//        // Try running your application with "flutter run". You'll see the
+//        // application has a blue toolbar. Then, without quitting the app, try
+//        // changing the primarySwatch below to Colors.green and then invoke
+//        // "hot reload" (press "r" in the console where you ran "flutter run",
+//        // or press Run > Flutter Hot Reload in IntelliJ). Notice that the
+//        // counter didn't reset back to zero; the application is not restarted.
+//        primarySwatch: Colors.blue,
+//      ),
+//
+//      home: new MyHomePage(title: '主页'),
+//    );
   }
 }
 
@@ -91,7 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Image.asset("images/girl.jpg",width: 55.0,height: 55.0),
+            Image.asset("images/girl.jpg", width: 55.0, height: 55.0),
             new Text(
               'You have pushed the button this many times:',
             ),
@@ -110,5 +121,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
-
