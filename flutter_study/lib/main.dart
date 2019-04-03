@@ -14,7 +14,20 @@ class MyApp extends StatelessWidget {
           centerTitle: false,
         ),
         body: Center(
-          child: Text('hello world'),
+          child: Text(
+              'hello world 开房记录考勤记录看JFK立即离开的警方立刻解'
+                  '放立刻集散地立',
+            textAlign: TextAlign.left,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              fontSize: 18,
+              color: Color.fromARGB(255, 255, 125, 125),
+              decoration: TextDecoration.underline ,
+              decorationStyle: TextDecorationStyle.double,
+              fontStyle: FontStyle.italic,
+            ),
+          ),
         ),
       ),
     );
