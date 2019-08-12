@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study_demo/pages/NewRoute.dart';
+import 'package:flutter_study_demo/pages/RoterTestRoute.dart';
 
 void main() => runApp(MyApp());
 
+// 如果无法找到真机，可以在terminal 执行明林 flutter devices
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -104,10 +106,19 @@ class _MyHomePageState extends State<MyHomePage> {
             Text("新增加的一行文字${_counter}"),
             FlatButton(
               child: Text("open newRoute"),
-              textColor: Colors.deepOrange,
+              textColor: Colors.blue,
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
                   return NewRoute();
+                }));
+              },
+            ),
+            FlatButton(
+              child: Text("open RoterTestRoute"),
+              textColor: Colors.deepOrange,
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return RouterTestRoute();
                 }));
               },
             ),
