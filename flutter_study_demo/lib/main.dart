@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_study_demo/pages/NewRoute.dart';
 import 'package:flutter_study_demo/pages/RoterTestRoute.dart';
 import 'package:flutter_study_demo/pages/EchoRoute.dart';
+import 'package:flutter_study_demo/pages/GenerateRote.dart';
 
 void main() => runApp(MyApp());
 
@@ -34,6 +35,20 @@ class MyApp extends StatelessWidget {
               title: 'flutter demo home page',
             ), //注册首页路由
         "echo_route": (context) => EchoRoute()
+      },
+
+      //Navigator.pushNamed(...)打开命名路由时，如果指定的路由名在路由表中已注册，则会调用路由表中的builder函数来生成路由组件；如果路由表中没有注册，才会调用
+      onGenerateRoute: (RouteSettings settings) {
+        return MaterialPageRoute(builder: (context) {
+          String name = settings.name;
+          print("打印日志" + name);
+          if (name == "generate_rote") {
+            return GenerateRote();
+          }
+          return MyHomePage(
+            title: "你好呀",
+          );
+        });
       },
       //默认下面这种方式，首页
 //      home: MyHomePage(
@@ -147,8 +162,17 @@ class _MyHomePageState extends State<MyHomePage> {
                 textColor: Colors.blue,
                 onPressed: () {
                   //通过路由名打开新路由页,并传递参数
-              Navigator.of(context).pushNamed("echo_route",arguments: "hello");
-                })
+                  Navigator.of(context)
+                      .pushNamed("echo_route", arguments: "hello");
+                }),
+            FlatButton(
+                child: Text("open generateRote"),
+                textColor: Colors.blue,
+                onPressed: () {
+                  //通过路由名打开新路由页,并传递参数
+                  Navigator.of(context)
+                      .pushNamed("generate_rote", arguments: "hello");
+                }),
           ],
         ),
       ),
