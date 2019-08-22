@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study_demo/pages/NewRoute.dart';
 import 'package:flutter_study_demo/pages/RoterTestRoute.dart';
+import 'package:flutter_study_demo/pages/EchoRoute.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,6 +12,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      // 名为“/”的路由作为应用的首页（home）initialRoute这个属性对应的名字就是首页
+      initialRoute: "/",
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -23,9 +26,19 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(
-        title: "888",
-      ),
+      //注册路由表
+      routes: {
+        "new_page": (context) => NewRoute(),
+        // 名为“/”的路由作为应用的首页（home）
+        "/": (context) => MyHomePage(
+              title: 'flutter demo home page',
+            ), //注册首页路由
+        "echo_route": (context) => EchoRoute()
+      },
+      //默认下面这种方式，首页
+//      home: MyHomePage(
+//        title: "888",
+//      ),
     );
   }
 }
@@ -122,6 +135,20 @@ class _MyHomePageState extends State<MyHomePage> {
                 }));
               },
             ),
+            FlatButton(
+                child: Text("open newRoute"),
+                textColor: Colors.amberAccent,
+                onPressed: () {
+                  //通过路由名打开新路由页
+                  Navigator.pushNamed(context, "new_page");
+                }),
+            FlatButton(
+                child: Text("open newRoute"),
+                textColor: Colors.blue,
+                onPressed: () {
+                  //通过路由名打开新路由页,并传递参数
+              Navigator.of(context).pushNamed("echo_route",arguments: "hello");
+                })
           ],
         ),
       ),
