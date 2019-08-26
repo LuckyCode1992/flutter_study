@@ -3,6 +3,7 @@ import 'package:flutter_study_demo/pages/NewRoute.dart';
 import 'package:flutter_study_demo/pages/RoterTestRoute.dart';
 import 'package:flutter_study_demo/pages/EchoRoute.dart';
 import 'package:flutter_study_demo/pages/GenerateRote.dart';
+import 'package:english_words/english_words.dart';
 
 void main() => runApp(MyApp());
 
@@ -98,84 +99,91 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
+
+    final wordPair = new WordPair.random();
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title + _counter.toString()),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:${_counter}',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display2,
-            ),
-            Text("新增加的一行文字${_counter}"),
-            FlatButton(
-              child: Text("open newRoute"),
-              textColor: Colors.blue,
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return NewRoute();
-                }));
-              },
-            ),
-            FlatButton(
-              child: Text("open RoterTestRoute"),
-              textColor: Colors.deepOrange,
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return RouterTestRoute();
-                }));
-              },
-            ),
-            FlatButton(
-                child: Text("open newRoute"),
-                textColor: Colors.amberAccent,
-                onPressed: () {
-                  //通过路由名打开新路由页
-                  Navigator.pushNamed(context, "new_page");
-                }),
-            FlatButton(
+      body: SingleChildScrollView(
+        child: Center(
+          // Center is a layout widget. It takes a single child and positions it
+          // in the middle of the parent.
+          child: Column(
+            // Column is also layout widget. It takes a list of children and
+            // arranges them vertically. By default, it sizes itself to fit its
+            // children horizontally, and tries to be as tall as its parent.
+            //
+            // Invoke "debug painting" (press "p" in the console, choose the
+            // "Toggle Debug Paint" action from the Flutter Inspector in Android
+            // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
+            // to see the wireframe for each widget.
+            //
+            // Column has various properties to control how it sizes itself and
+            // how it positions its children. Here we use mainAxisAlignment to
+            // center the children vertically; the main axis here is the vertical
+            // axis because Columns are vertical (the cross axis would be
+            // horizontal).
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text("随机的单词:${wordPair.toString()}"),
+              Text(
+                'You have pushed the button this many times:${_counter}',
+              ),
+              Text(
+                '$_counter',
+                style: Theme.of(context).textTheme.display2,
+              ),
+              Text("新增加的一行文字${_counter}"),
+              FlatButton(
                 child: Text("open newRoute"),
                 textColor: Colors.blue,
                 onPressed: () {
-                  //通过路由名打开新路由页,并传递参数
-                  Navigator.of(context)
-                      .pushNamed("echo_route", arguments: "hello");
-                }),
-            FlatButton(
-                child: Text("open generateRote"),
-                textColor: Colors.blue,
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return NewRoute();
+                  }));
+                },
+              ),
+              FlatButton(
+                child: Text("open RoterTestRoute"),
+                textColor: Colors.deepOrange,
                 onPressed: () {
-                  //通过路由名打开新路由页,并传递参数
-                  Navigator.of(context)
-                      .pushNamed("generate_rote", arguments: "hello");
-                }),
-          ],
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return RouterTestRoute();
+                  }));
+                },
+              ),
+              FlatButton(
+                  child: Text("open newRoute"),
+                  textColor: Colors.amberAccent,
+                  onPressed: () {
+                    //通过路由名打开新路由页
+                    Navigator.pushNamed(context, "new_page");
+                  }),
+              FlatButton(
+                  child: Text("open newRoute"),
+                  textColor: Colors.blue,
+                  onPressed: () {
+                    //通过路由名打开新路由页,并传递参数
+                    Navigator.of(context)
+                        .pushNamed("echo_route", arguments: "hello");
+                  }),
+              FlatButton(
+                  child: Text("open generateRote"),
+                  textColor: Colors.blue,
+                  onPressed: () {
+                    //通过路由名打开新路由页,并传递参数
+                    Navigator.of(context)
+                        .pushNamed("generate_rote", arguments: "hello");
+                  }),
+            Image.asset("images/2.jpg",width: 100,height: 300,),
+            ],
+          ),
         ),
       ),
+
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'click',

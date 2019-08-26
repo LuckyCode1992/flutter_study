@@ -12,6 +12,7 @@ version: 1.0.0+1
 environment:
   sdk: ">=2.1.0 <3.0.0"
 
+#应用或包依赖的其它包或插件
 dependencies:
   flutter:
     sdk: flutter
@@ -20,6 +21,20 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
 
+  # 新添加的依赖
+  english_words: ^3.1.5
+
+  # 依赖本地包
+#  pakg:
+#  path: ../../code/pkg1
+
+#  dependencies和dev_dependencies的区别，
+#  前者的依赖包将作为APP的源码的一部分参与编译，生成最终的安装包。
+#  而后者的依赖包只是作为开发阶段的一些工具包，主要是用于帮助我们提高开发、测试效率，比如flutter的自动化测试包等。
+
+
+
+#开发环境依赖的工具包（而不是flutter应用本身依赖的包）。
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -29,7 +44,13 @@ dev_dependencies:
 # following page: https://www.dartlang.org/tools/pub/pubspec
 
 # The following section is specific to Flutter.
+#flutter相关的配置选项
 flutter:
+
+  #  文件来管理
+  assets:
+    - images/
+
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
