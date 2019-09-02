@@ -4,6 +4,7 @@ import 'package:flutter_study_demo/pages/RoterTestRoute.dart';
 import 'package:flutter_study_demo/pages/EchoRoute.dart';
 import 'package:flutter_study_demo/pages/GenerateRote.dart';
 import 'package:english_words/english_words.dart';
+import 'package:flutter_study_demo/pages/CounterWidget.dart';
 
 void main() => runApp(MyApp());
 
@@ -178,7 +179,19 @@ class _MyHomePageState extends State<MyHomePage> {
                     Navigator.of(context)
                         .pushNamed("generate_rote", arguments: "hello");
                   }),
-            Image.asset("images/2.jpg",width: 100,height: 300,),
+              FlatButton(
+                child: Text("state解释"),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return CounterWidget();
+                  }));
+                },
+              ),
+              Image.asset(
+                "images/2.jpg",
+                width: 100,
+                height: 300,
+              ),
             ],
           ),
         ),
