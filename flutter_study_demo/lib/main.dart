@@ -5,6 +5,7 @@ import 'package:flutter_study_demo/pages/EchoRoute.dart';
 import 'package:flutter_study_demo/pages/GenerateRote.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter_study_demo/pages/CounterWidget.dart';
+import 'package:flutter_study_demo/pages/StateGetDemoWidget.dart';
 
 void main() => runApp(MyApp());
 
@@ -184,6 +185,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return CounterWidget();
+                  }));
+                },
+              ),
+              FlatButton(
+                child: Text("获取state"),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return StateGetDemoWidget();
                   }));
                 },
               ),
