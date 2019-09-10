@@ -7,6 +7,7 @@ import 'package:english_words/english_words.dart';
 import 'package:flutter_study_demo/pages/CounterWidget.dart';
 import 'package:flutter_study_demo/pages/StateGetDemoWidget.dart';
 import 'package:flutter_study_demo/pages/TextDemoWidget.dart';
+import 'package:flutter_study_demo/pages/ButtonDemoWidget.dart';
 
 void main() => runApp(MyApp());
 
@@ -202,6 +203,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return TextDemoWidget();
+                  }));
+                },
+              ),
+              FlatButton(
+                child: Text("按钮demo"),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return ButtonDemoWidget();
                   }));
                 },
               ),
