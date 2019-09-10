@@ -34,6 +34,53 @@ class TextDemoWidget extends StatelessWidget {
                 "放大Hello world",
                 textScaleFactor: 2,
               ),
+//             height：该属性用于指定行高，但它并不是一个绝对值，而是一个因子，具体的行高等于fontSize*height
+//            fontFamily ：由于不同平台默认支持的字体集不同
+//            fontSize：该属性和Text的textScaleFactor都用于控制字体大小
+//            fontSize可以精确指定字体大小，而textScaleFactor只能通过缩放比例来控制。
+//            textScaleFactor主要是用于系统字体大小设置改变时对Flutter应用字体进行全局调整，而fontSize通常用于单个文本，字体大小不会跟随系统字体大小变化
+              Text(
+                "TextStyle用于指定文本显示的样式如颜色、字体、粗细、背景",
+                style: TextStyle(
+                    color: Colors.blue,
+                    fontSize: 18.0,
+                    height: 1.2,
+                    fontFamily: "Courier",
+                    background: new Paint()..color = Colors.yellow,
+                    decoration: TextDecoration.underline,
+                    decorationStyle: TextDecorationStyle.dashed),
+              ),
+              Text.rich(TextSpan(children: [
+                TextSpan(text: "home:"),
+                TextSpan(
+                  text: "h1435256",
+                  style: TextStyle(
+                      color: Colors.yellow,
+                      height: 1.5,
+                      decoration: TextDecoration.lineThrough),
+                )
+              ])),
+              DefaultTextStyle(
+                //1.设置文本默认样式
+                style: TextStyle(
+                  color: Colors.red,
+                  fontSize: 20.0,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text("hello world"),
+                    Text("I am Jack"),
+                    Text(
+                      "I am Jack",
+                      style: TextStyle(
+                          inherit: false, //2.不继承默认样式
+                          color: Colors.grey),
+                    ),
+                  ],
+                ),
+              ),
+
             ],
           ),
         ),
