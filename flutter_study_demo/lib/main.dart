@@ -8,6 +8,7 @@ import 'package:flutter_study_demo/pages/CounterWidget.dart';
 import 'package:flutter_study_demo/pages/StateGetDemoWidget.dart';
 import 'package:flutter_study_demo/pages/TextDemoWidget.dart';
 import 'package:flutter_study_demo/pages/ButtonDemoWidget.dart';
+import 'package:flutter_study_demo/pages/ImageAndIconDemoWidget.dart';
 
 void main() => runApp(MyApp());
 
@@ -211,6 +212,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return ButtonDemoWidget();
+                  }));
+                },
+              ),
+              FlatButton(
+                child: Text("Image和icon"),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return ImageAndIconDemoWidget();
                   }));
                 },
               ),
