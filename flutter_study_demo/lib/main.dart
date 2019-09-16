@@ -9,6 +9,7 @@ import 'package:flutter_study_demo/pages/StateGetDemoWidget.dart';
 import 'package:flutter_study_demo/pages/TextDemoWidget.dart';
 import 'package:flutter_study_demo/pages/ButtonDemoWidget.dart';
 import 'package:flutter_study_demo/pages/ImageAndIconDemoWidget.dart';
+import 'package:flutter_study_demo/pages/SwitchAndCheckBoxWidget.dart';
 
 void main() => runApp(MyApp());
 
@@ -220,6 +221,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return ImageAndIconDemoWidget();
+                  }));
+                },
+              ),
+              FlatButton(
+                child: Text("单选框和复选框"),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return SwitchAndCheckBoxWidget();
                   }));
                 },
               ),
