@@ -10,6 +10,7 @@ import 'package:flutter_study_demo/pages/TextDemoWidget.dart';
 import 'package:flutter_study_demo/pages/ButtonDemoWidget.dart';
 import 'package:flutter_study_demo/pages/ImageAndIconDemoWidget.dart';
 import 'package:flutter_study_demo/pages/SwitchAndCheckBoxWidget.dart';
+import 'package:flutter_study_demo/pages/TextFieldAndFormWidget.dart';
 
 void main() => runApp(MyApp());
 
@@ -38,7 +39,8 @@ class MyApp extends StatelessWidget {
       routes: {
         "new_page": (context) => NewRoute(),
         // 名为“/”的路由作为应用的首页（home）
-        "/": (context) => MyHomePage(
+        "/": (context) =>
+            MyHomePage(
               title: 'flutter demo home page',
             ), //注册首页路由
         "echo_route": (context) => EchoRoute()
@@ -140,7 +142,10 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               Text(
                 '$_counter',
-                style: Theme.of(context).textTheme.display2,
+                style: Theme
+                    .of(context)
+                    .textTheme
+                    .display2,
               ),
               Text("新增加的一行文字${_counter}"),
               FlatButton(
@@ -229,6 +234,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return SwitchAndCheckBoxWidget();
+                  }));
+                },
+              ),
+              FlatButton(
+                child: Text("输入框"),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return TextFieldWidget();
                   }));
                 },
               ),
