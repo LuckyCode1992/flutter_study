@@ -12,6 +12,11 @@ class _TextFieldWidget extends State<TextFieldWidget> {
   TextEditingController _unameController = TextEditingController();
   TextEditingController _upwdController = TextEditingController();
 
+  //定义FocusNode
+  FocusNode focusNode1 = new FocusNode();
+  FocusNode focusNode2 = new FocusNode();
+  FocusScopeNode focusScopeNode;
+
   @override
   Widget build(BuildContext context) {
     /**
@@ -72,6 +77,8 @@ class _TextFieldWidget extends State<TextFieldWidget> {
             TextField(
               //自动获取焦点
               autofocus: true,
+              focusNode: focusNode1,
+              //关联focusNode1
               decoration: InputDecoration(
                   labelText: "用户名",
                   hintText: "用户名或邮箱",
@@ -83,6 +90,7 @@ class _TextFieldWidget extends State<TextFieldWidget> {
               },
             ),
             TextField(
+              focusNode: focusNode2, //关联focusNode2
               decoration: InputDecoration(
                   labelText: "密码",
                   hintText: "您的登录密码",
@@ -98,6 +106,30 @@ class _TextFieldWidget extends State<TextFieldWidget> {
               },
             ),
 
+            //焦点可以通过FocusNode和FocusScopeNode来控制，
+            // 默认情况下，焦点由FocusScope来管理，它代表焦点控制范围，
+            // 可以在这个范围内可以通过FocusScopeNode在输入框之间移动焦点、设置默认焦点等。
+            // 我们可以通过FocusScope.of(context) 来获取Widget树中默认的FocusScopeNode
+            RaisedButton(
+              child: Text("移动焦点"),
+              onPressed: () {
+                //将焦点从第一个TextField移到第二个TextField
+                //这是一种写法
+//                FocusScope.of(context).requestFocus(focusNode2);
+                // 这是第二种写法
+                if (null == focusScopeNode) {
+                  focusScopeNode = FocusScope.of(context);
+                }
+                focusScopeNode.requestFocus(focusNode2);
+              },
+            ),
+            RaisedButton(
+              child: Text("隐藏软键盘"),
+              onPressed: () {
+                focusNode2.unfocus();
+                focusNode1.unfocus();
+              },
+            )
           ],
         ),
       ),
@@ -109,6 +141,13 @@ class _TextFieldWidget extends State<TextFieldWidget> {
     //监听 文本变化
     _upwdController.addListener(() {
       print(_upwdController.text);
+    });
+    // FocusNode继承自ChangeNotifier，通过FocusNode可以监听焦点的改变事件
+    focusNode1.addListener(() {
+      print("focusNode1:" + focusNode1.hasFocus.toString());
+    });
+    focusNode2.addListener(() {
+      print("focusNode2:" + focusNode2.hasFocus.toString());
     });
   }
 }
