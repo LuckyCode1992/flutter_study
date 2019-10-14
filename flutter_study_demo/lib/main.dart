@@ -10,11 +10,12 @@ import 'package:flutter_study_demo/pages/TextDemoWidget.dart';
 import 'package:flutter_study_demo/pages/ButtonDemoWidget.dart';
 import 'package:flutter_study_demo/pages/ImageAndIconDemoWidget.dart';
 import 'package:flutter_study_demo/pages/SwitchAndCheckBoxWidget.dart';
-import 'package:flutter_study_demo/pages/TextFieldAndFormWidget.dart';
+import 'package:flutter_study_demo/pages/TextFieldWidget.dart';
+import 'package:flutter_study_demo/pages/ProgressIndicatorWidget.dart';
 
 void main() => runApp(MyApp());
 
-// 如果无法找到真机，可以在terminal 执行明林 flutter devices
+// 如果无法找到真机，可以在terminal 执行命令 flutter devices
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -39,8 +40,7 @@ class MyApp extends StatelessWidget {
       routes: {
         "new_page": (context) => NewRoute(),
         // 名为“/”的路由作为应用的首页（home）
-        "/": (context) =>
-            MyHomePage(
+        "/": (context) => MyHomePage(
               title: 'flutter demo home page',
             ), //注册首页路由
         "echo_route": (context) => EchoRoute()
@@ -142,10 +142,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               Text(
                 '$_counter',
-                style: Theme
-                    .of(context)
-                    .textTheme
-                    .display2,
+                style: Theme.of(context).textTheme.display2,
               ),
               Text("新增加的一行文字${_counter}"),
               FlatButton(
@@ -242,6 +239,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return TextFieldWidget();
+                  }));
+                },
+              ),
+              FlatButton(
+                child: Text("进度条"),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return ProgressIndicatorWidget();
                   }));
                 },
               ),
