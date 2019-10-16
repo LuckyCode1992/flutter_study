@@ -12,6 +12,7 @@ import 'package:flutter_study_demo/pages/ImageAndIconDemoWidget.dart';
 import 'package:flutter_study_demo/pages/SwitchAndCheckBoxWidget.dart';
 import 'package:flutter_study_demo/pages/TextFieldWidget.dart';
 import 'package:flutter_study_demo/pages/ProgressIndicatorWidget.dart';
+import 'package:flutter_study_demo/pages/RowAndColumnWidget.dart';
 
 void main() => runApp(MyApp());
 
@@ -247,6 +248,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return ProgressIndicatorWidget();
+                  }));
+                },
+              ),
+              RaisedButton(
+                child: Text("线性布局Row和Column"),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return RowAndColumnWidget();
                   }));
                 },
               ),
