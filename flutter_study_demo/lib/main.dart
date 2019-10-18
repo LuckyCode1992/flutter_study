@@ -13,6 +13,7 @@ import 'package:flutter_study_demo/pages/SwitchAndCheckBoxWidget.dart';
 import 'package:flutter_study_demo/pages/TextFieldWidget.dart';
 import 'package:flutter_study_demo/pages/ProgressIndicatorWidget.dart';
 import 'package:flutter_study_demo/pages/RowAndColumnWidget.dart';
+import 'package:flutter_study_demo/pages/FlexLayoutWidget.dart';
 
 void main() => runApp(MyApp());
 
@@ -256,6 +257,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return RowAndColumnWidget();
+                  }));
+                },
+              ),
+              RaisedButton(
+                child: Text("弹性布局 flex"),
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context){
+                    return FlexLayoutWidget();
                   }));
                 },
               ),
