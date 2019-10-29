@@ -14,6 +14,8 @@ import 'package:flutter_study_demo/pages/TextFieldWidget.dart';
 import 'package:flutter_study_demo/pages/ProgressIndicatorWidget.dart';
 import 'package:flutter_study_demo/pages/RowAndColumnWidget.dart';
 import 'package:flutter_study_demo/pages/FlexLayoutWidget.dart';
+import 'package:flutter_study_demo/pages/WrapAndFlowWidget.dart';
+import 'package:flutter_study_demo/pages/StackPositionedWidget.dart';
 
 void main() => runApp(MyApp());
 
@@ -265,6 +267,22 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context){
                     return FlexLayoutWidget();
+                  }));
+                },
+              ),
+              RaisedButton(
+                child: Text("流式布局 wrap  flow"),
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context){
+                    return WrapAndFlowWidget();
+                  }));
+                },
+              ),
+              RaisedButton(
+                child: Text("层叠布局 stack position"),
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context){
+                    return StackPositionedWidget();
                   }));
                 },
               ),
