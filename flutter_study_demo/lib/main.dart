@@ -16,6 +16,7 @@ import 'package:flutter_study_demo/pages/RowAndColumnWidget.dart';
 import 'package:flutter_study_demo/pages/FlexLayoutWidget.dart';
 import 'package:flutter_study_demo/pages/WrapAndFlowWidget.dart';
 import 'package:flutter_study_demo/pages/StackPositionedWidget.dart';
+import 'package:flutter_study_demo/pages/AlignWidget.dart';
 
 void main() => runApp(MyApp());
 
@@ -283,6 +284,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context){
                     return StackPositionedWidget();
+                  }));
+                },
+              ),
+              RaisedButton(
+                child: Text("相对布局与对齐 Align "),
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context){
+                    return AlignWidget();
                   }));
                 },
               ),
