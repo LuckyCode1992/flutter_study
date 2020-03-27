@@ -21,6 +21,7 @@ import 'package:flutter_study_demo/pages/AlignWidget.dart';
 void main() => runApp(MyApp());
 
 // 如果无法找到真机，可以在terminal 执行命令 flutter devices
+// 其他as版本导入，可能需要更改gradle 的构建版本 具体看报错信息
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
